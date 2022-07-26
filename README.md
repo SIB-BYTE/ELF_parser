@@ -3,7 +3,7 @@
 
 # ELF file format:
 A file format is a formation of bytes recognizable to the operating system for an ease of access, the ELF (executable / extensible and linkable format) file format is defined by linux and the formation looks like so:
-![ELF](https://en.wikipedia.org/wiki/File:Elf-layout--en.svg)
+![ELF](http://www2.cs.uidaho.edu/~krings/CS270/Notes.S10/270-F10-04.pdf)
 
 # ELF header:
 
