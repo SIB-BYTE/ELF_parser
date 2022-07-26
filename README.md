@@ -70,7 +70,15 @@ typedef struct {
 } Elf64_Phdr;
 ```
 
+``p_type`` - Indicates the type of segment that's being described at the current entry in the table. See ``man elf`` to see the types.
 
+``p_flags`` - Flags of the current segment. (Executable, writable, readable, et cetera)
+
+``p_offset`` - Offset in bytes from the beginning of the file from the current section table entry in memory.
+
+``p_vaddr`` - Virtual address of the entry byte of the segment in virtual memory.
+
+``p_paddr`` - Physical address of the entry byte of the segment in physcial memory.
 
 # Section header table:
 
