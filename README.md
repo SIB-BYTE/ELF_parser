@@ -4,7 +4,8 @@
 # ELF file format:
 A file format is a formation of bytes recognizable to the operating system for an ease of access of it's contents, the ELF (executable / extensible and linkable format) file format is defined by linux and the formation looks like so:
 ![ELF](/imgs/ELF.png)
-let's go ahead and analyze what this actually means.
+
+let's go ahead and analyze what this structure and format and see what it actually means.
 
 # ELF header:
 So the ELF header can be denoted with this structure:
