@@ -69,7 +69,7 @@ void dump_elf_header(elf_parser_t *parser)
 	switch(parser->elf_header->e_ident[EI_OSABI])
 	{
 		case ELFOSABI_SYSV:    puts("System V ABI"); break;
-		case ELFOSABI_HPUX:    puts("HP_UX ABI");	 break;
+		case ELFOSABI_HPUX:    puts("HP_UX ABI");    break;
 		case ELFOSABI_NETBSD:  puts("NetBSD ABI");   break;
 		case ELFOSABI_LINUX:   puts("Linux ABI");    break;
 		case ELFOSABI_SOLARIS: puts("Solaris ABI");  break;
@@ -84,11 +84,11 @@ void dump_elf_header(elf_parser_t *parser)
 	printf("File type: ");
 	switch(parser->elf_header->e_type)
 	{
-		case ET_NONE: puts("Invalid type!");      break;
+		case ET_NONE: puts("Invalid type!");     break;
 		case ET_REL:  puts("Relocatable file");   break;
 		case ET_EXEC: puts("Executable file");    break;
 		case ET_DYN:  puts("Shared object file"); break;
-		case ET_CORE: puts("Core file");		  break;
+		case ET_CORE: puts("Core file");	  break;
 	}
 
 	// Displays the architecture type of the machine you're on:
@@ -103,37 +103,37 @@ void dump_elf_header(elf_parser_t *parser)
 		case EM_88K:     puts("Motorola 88000");   break;
 		case EM_860:     puts("Intel 80860");      break;
 		case EM_MIPS:    puts("MIPS RS3000");	   break;
-		case EM_PARISC:  puts("HP || PA");		   break;
-		case EM_PPC:     puts("PowerPC");		   break;
+		case EM_PARISC:  puts("HP || PA");	   break;
+		case EM_PPC:     puts("PowerPC");	   break;
 		case EM_PPC64:   puts("PowerPC 64-bit");   break;
 		case EM_S390:    puts("IBM S/390");        break;
 		case EM_ARM:     puts("RISC machines");    break;
 		case EM_SH:      puts("Renesas superh");   break;
 		case EM_SPARCV9: puts("SPARC V9 64-bit");  break;
 		case EM_IA_64:   puts("Intel Itanium");    break;
-		case EM_X86_64:  puts("x86-64");		   break;
+		case EM_X86_64:  puts("x86-64");	   break;
 		case EM_VAX:     puts("VAX machine");	   break;
 	}
 
 	// Display other ELF information:
 	printf("ELF entry: {0x%08lx}\n"
-		   "Program header offset: {0x%lu}\n"
-		   "Section header offset: {0x%lu}\n"
-		   "ELF flags: {%s}\n"
-		   "ELF header size: {%hu}\n"
-		   "Size of entries in program header table: {%hu}\n"
-		   "Program header table entries: {%hu}\n"
-		   "Size of each section header entry: {%u}\n"
-		   "Section header table entry count: {%hu}\n",
-		   parser->elf_header->e_entry,
-		   parser->elf_header->e_phoff,
-		   parser->elf_header->e_shoff,
-		   dump_elf_flag(parser->elf_header->e_flags),
-		   parser->elf_header->e_ehsize,
-		   parser->elf_header->e_phentsize,
-		   parser->elf_header->e_phnum,
-		   parser->elf_header->e_shentsize,
-		   parser->elf_header->e_shnum);
+	       "Program header offset: {0x%lu}\n"
+	       "Section header offset: {0x%lu}\n"
+	       "ELF flags: {%s}\n"
+	       "ELF header size: {%hu}\n"
+	       "Size of entries in program header table: {%hu}\n"
+	       "Program header table entries: {%hu}\n"
+	       "Size of each section header entry: {%u}\n"
+	       "Section header table entry count: {%hu}\n",
+		parser->elf_header->e_entry,
+		parser->elf_header->e_phoff,
+		parser->elf_header->e_shoff,
+		dump_elf_flag(parser->elf_header->e_flags),
+		parser->elf_header->e_ehsize,
+		parser->elf_header->e_phentsize,
+		parser->elf_header->e_phnum,
+		parser->elf_header->e_shentsize,
+		parser->elf_header->e_shnum);
 
 	puts(CLR);
 }
@@ -144,22 +144,22 @@ void dump_program_header(elf_parser_t *parser)
 	for(int i = 0; i < parser->elf_header->e_phnum; ++i)
 	{
 		printf("%sType: {%s}\n"
-			   "Flags: {%s}\n"
-			   "Offset: {%#lx}\n"
-			   "Virtual address: {%#lx}\n"
-			   "Physical address: {%#lx}\n"
-			   "File image size: {%#lx}\n"
-			   "Memory image size: {%#lx}\n"
-			   "Memory aligned offset: {%#lx}\n",
-			   "\x1b[0;31m",
-			   dump_program_type(parser->program_header[i].p_type),
-			   dump_program_flag(parser->program_header[i].p_flags),
-			   parser->program_header[i].p_offset,
-			   parser->program_header[i].p_vaddr,
-			   parser->program_header[i].p_paddr,
-			   parser->program_header[i].p_filesz,
-			   parser->program_header[i].p_memsz,
-			   parser->program_header[i].p_align);
+		       "Flags: {%s}\n"
+		       "Offset: {%#lx}\n"
+		       "Virtual address: {%#lx}\n"
+		       "Physical address: {%#lx}\n"
+		       "File image size: {%#lx}\n"
+		       "Memory image size: {%#lx}\n"
+		       "Memory aligned offset: {%#lx}\n",
+		       "\x1b[0;31m",
+			dump_program_type(parser->program_header[i].p_type),
+			dump_program_flag(parser->program_header[i].p_flags),
+			parser->program_header[i].p_offset,
+			parser->program_header[i].p_vaddr,
+			parser->program_header[i].p_paddr,
+			parser->program_header[i].p_filesz,
+			parser->program_header[i].p_memsz,
+			parser->program_header[i].p_align);
 
 		putchar(0xa);
 	}
@@ -173,24 +173,24 @@ void dump_section_header(elf_parser_t *parser)
 	for(int i = 0; i < parser->elf_header->e_shnum; ++i)
 	{
 		printf("%sSection: (%s)\n"
-			   "Type: {%s}\n"
-			   "Flags: {%s}\n"
-			   "Address: {%#lx}\n"
-			   "Offset: {%#lx}\n"
-			   "Size: {%lu bytes}\n"
-			   "Index link: {%u}\n"
-			   "Address alignment: {%#lx}\n"
-			   "Entry size: {%lu bytes}\n",
-			   "\x1b[0;32m",
-			   (parser->section_header[i].sh_name + parser->string_table_buffer),
-			   dump_section_type(parser->section_header[i].sh_type),
-			   dump_section_flag(parser->section_header[i].sh_flags),
-			   parser->section_header[i].sh_addr,
-			   parser->section_header[i].sh_offset,
-			   parser->section_header[i].sh_size,
-			   parser->section_header[i].sh_link,
-			   parser->section_header[i].sh_addralign,
-			   parser->section_header[i].sh_entsize);
+		       "Type: {%s}\n"
+		       "Flags: {%s}\n"
+		       "Address: {%#lx}\n"
+		       "Offset: {%#lx}\n"
+		       "Size: {%lu bytes}\n"
+		       "Index link: {%u}\n"
+		       "Address alignment: {%#lx}\n"
+		       "Entry size: {%lu bytes}\n",
+		       "\x1b[0;32m",
+			(parser->section_header[i].sh_name + parser->string_table_buffer),
+			dump_section_type(parser->section_header[i].sh_type),
+			dump_section_flag(parser->section_header[i].sh_flags),
+			parser->section_header[i].sh_addr,
+			parser->section_header[i].sh_offset,
+			parser->section_header[i].sh_size,
+			parser->section_header[i].sh_link,
+			parser->section_header[i].sh_addralign,
+			parser->section_header[i].sh_entsize);
 
 		putchar(0xa);
 	}
@@ -215,20 +215,20 @@ void dump_symbol_table(elf_parser_t *parser)
 		for(size_t i = 0; i < symbol_count; ++i)
 		{
 			printf("%sSymbol name: {%s}\n"
-				   "Symbol value: {%#lx}\n"
-				   "Symbol size: {%#lx}\n"
-				   "Symbols type: {%s}\n"
-				   "Symbols binding: {%s}\n"
-				   "Symbols visibility: {%s}\n"
-				   "Symbols section header table index: {%u}\n",
-				   "\x1b[0;35m",
-				   (parser->symbol_table_buffer + parser->symbol_table[i].st_name),
-				   parser->symbol_table[i].st_value,
-				   parser->symbol_table[i].st_size,
-				   dump_symbol_type(parser->symbol_table[i].st_info),
-				   dump_symbol_bind(parser->symbol_table[i].st_info),
-				   dump_symbol_visibility(parser->symbol_table[i].st_other),
-				   parser->symbol_table[i].st_shndx);
+			       "Symbol value: {%#lx}\n"
+			       "Symbol size: {%#lx}\n"
+			       "Symbols type: {%s}\n"
+			       "Symbols binding: {%s}\n"
+			       "Symbols visibility: {%s}\n"
+			       "Symbols section header table index: {%u}\n",
+			       "\x1b[0;35m",
+			       (parser->symbol_table_buffer + parser->symbol_table[i].st_name),
+				parser->symbol_table[i].st_value,
+				parser->symbol_table[i].st_size,
+				dump_symbol_type(parser->symbol_table[i].st_info),
+				dump_symbol_bind(parser->symbol_table[i].st_info),
+				dump_symbol_visibility(parser->symbol_table[i].st_other),
+				parser->symbol_table[i].st_shndx);
 
 			putchar(0xa);
 		}
