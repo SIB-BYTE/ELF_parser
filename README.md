@@ -2,7 +2,7 @@
 64-bit ELF parser / dump that parses the: ELF header, program header, section header and symbol table!
 
 # ELF file format:
-A file format is a formation of bytes recognizable to the operating system for an ease of access, the ELF (executable / extensible and linkable format) file format is defined by linux and the formation looks like so:
+A file format is a formation of bytes recognizable to the operating system for an ease of access of it's contents, the ELF (executable / extensible and linkable format) file format is defined by linux and the formation looks like so:
 ![ELF](/imgs/ELF.png)
 let's go ahead and analyze what this actually means.
 
