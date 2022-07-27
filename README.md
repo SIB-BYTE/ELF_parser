@@ -27,9 +27,12 @@ typedef struct {
     uint16_t      e_shentsize;
     uint16_t      e_shnum;
     uint16_t      e_shstrndx;
-} ElfN_Ehdr;
+} Elf64_Ehdr;
 ```
-so let's analyze the attributes of this structure: 
+
+This structure holds information about the ELf file for the operating system.
+
+``Elf64_Ehdr`` field linguistic definitions:
 ``e_ident`` - An array of bytes at the beginning of the ELF executable that signifies certain information about the file, for example the first 4 bytes let's the operating system know if it's even an ELF, this is what's known as the "magic bytes". The magic bytes of the ELF header is: "\x7fELF" or "0x7f 0x45 0x4c 0x46". The next bytes of the array signify other things such as the architecture of the file, data specfifications of the system, ELF version, et cetera.
 
 ``e_type`` - The type of executable file it is. (relocatable file, executable file, shared object or core dumped file)
