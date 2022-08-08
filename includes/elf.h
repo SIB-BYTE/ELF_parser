@@ -53,20 +53,20 @@ void dump_section_header(elf_parser_t *);
 
 /* Flag & type mapping + dumping: */
 // ELF flags:
-char *dump_elf_flag(int);
+const char *dump_elf_flag(int);
 
 // Program header flags and types:
-char *dump_program_type(int);
-char *dump_program_flag(int);
+const char *dump_program_type(int);
+const char *dump_program_flag(int);
 
 // Section header:
-char *dump_section_type(int);
-char *dump_section_flag(unsigned long);
+const char *dump_section_type(int);
+const char *dump_section_flag(unsigned long);
 
-// String table:
-char *dump_symbol_bind(unsigned char);
-char *dump_symbol_type(unsigned char);
-char *dump_symbol_visibility(unsigned char);
+// Symbol table:
+const char *dump_symbol_bind(unsigned char);
+const char *dump_symbol_type(unsigned char);
+const char *dump_symbol_visibility(unsigned char);
 
 /* Misc: */
 size_t get_elf_size(char *);
