@@ -22,7 +22,7 @@ bool validate_elf(elf_parser_t *parser)
 }
 
 // ELF header flag field binding:
-char *dump_elf_flag(int flags)
+const char *dump_elf_flag(int flags)
 {
 	switch(flags)
 	{
@@ -43,7 +43,7 @@ char *dump_elf_flag(int flags)
 }
 
 // Program header type field binding:
-char *dump_program_type(int type)
+const char *dump_program_type(int type)
 {
 	switch(type)
 	{
@@ -71,7 +71,7 @@ char *dump_program_type(int type)
 }
 
 // Program header flag field binding:
-char *dump_program_flag(int flag)
+const char *dump_program_flag(int flag)
 {
 	switch(flag)
 	{
@@ -86,7 +86,7 @@ char *dump_program_flag(int flag)
 }
 
 // Section header type field binding:
-char *dump_section_type(int type)
+const char *dump_section_type(int type)
 {
 	switch(type)
 	{
@@ -149,7 +149,7 @@ char *dump_section_flag(unsigned long flag)
 }
 
 // Symbol table type field binding:
-char *dump_symbol_type(unsigned char type)
+const char *dump_symbol_type(unsigned char type)
 {
 	switch(ELF64_ST_TYPE(type))
 	{
@@ -165,7 +165,7 @@ char *dump_symbol_type(unsigned char type)
 }
 
 // Symbol table info field binding:
-char *dump_symbol_bind(unsigned char binding)
+const char *dump_symbol_bind(unsigned char binding)
 {
 	switch(ELF64_ST_BIND(binding))
 	{
@@ -179,8 +179,8 @@ char *dump_symbol_bind(unsigned char binding)
 	}
 }
 
-//
-char *dump_symbol_visibility(unsigned char vision)
+// Symbol table other field bindings:
+const char *dump_symbol_visibility(unsigned char vision)
 {
 	switch(ELF64_ST_VISIBILITY(vision))
 	{
